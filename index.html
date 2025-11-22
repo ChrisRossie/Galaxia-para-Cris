@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>Galaxia para Vicky</title>
-  <meta name="description" content="Galaxia interactiva de frases de cariño 💘">
-  <meta property="og:title" content="Galaxia para Vicky">
+  <title>Galaxia para Cris</title>
+  <meta name="description" content="Galaxia interactiva de frases de cariño 💕">
+  <meta property="og:title" content="Galaxia para Cris">
   <meta property="og:description" content="Una galaxia interactiva con palabras de cariño 💖">
   <meta property="og:image" content="og-cover.png">
   <link rel="icon" type="image/png" href="favicon.png">
@@ -13,16 +13,16 @@
     html,body{margin:0;height:100%;background:#000;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial}
     
     /* Welcome Screen */
-    #welcome-screen{position:fixed;inset:0;background:linear-gradient(135deg,#0a0014,#1a0030);display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:1000;color:white;padding:20px;text-align:center;}
+    #welcome-screen{position:fixed;inset:0;background:linear-gradient(135deg,#1a0014,#30002a);display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:1000;color:white;padding:20px;text-align:center;}
     .welcome-content{max-width:600px;background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);padding:40px;border-radius:20px;border:1px solid rgba(255,255,255,0.2);}
-    .welcome-title{font-size:2.5em;margin-bottom:20px;background:linear-gradient(45deg,#ff6b6b,#ffd93d,#6bcf7f,#4d96ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-    .welcome-message{font-size:1.2em;line-height:1.6;margin-bottom:30px;color:#e6e6ff;}
-    #enter-btn{padding:15px 40px;font-size:1.3em;background:linear-gradient(45deg,#ff6b6b,#4d96ff);border:none;border-radius:50px;color:white;cursor:pointer;transition:transform 0.3s;font-weight:bold;}
+    .welcome-title{font-size:2.5em;margin-bottom:20px;background:linear-gradient(45deg,#ff6b9d,#ff93ac,#ffb6c1,#ffd1dc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .welcome-message{font-size:1.2em;line-height:1.6;margin-bottom:30px;color:#ffe6f2;}
+    #enter-btn{padding:15px 40px;font-size:1.3em;background:linear-gradient(45deg,#ff6b9d,#ff93ac);border:none;border-radius:50px;color:white;cursor:pointer;transition:transform 0.3s;font-weight:bold;}
     #enter-btn:hover{transform:scale(1.1);}
     
     /* Warp Effect */
     #warp-effect{position:fixed;inset:0;background:#000;z-index:999;display:none;}
-    .warp-line{position:absolute;height:2px;background:linear-gradient(90deg,transparent,#4d96ff,transparent);width:100%;}
+    .warp-line{position:absolute;height:2px;background:linear-gradient(90deg,transparent,#ff93ac,transparent);width:100%;}
     
     /* Galaxy */
     #galaxy-canvas{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none;display:none;}
@@ -52,7 +52,7 @@
       background: rgba(0, 0, 0, 0.7);
       padding: 30px;
       border-radius: 15px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 182, 193, 0.3);
       backdrop-filter: blur(10px);
       line-height: 1.6;
       opacity: 0;
@@ -67,7 +67,7 @@
     
     .narrative-text.final {
       font-size: 2em;
-      color: #ffd93d;
+      color: #ffb6c1;
       background: rgba(0, 0, 0, 0.8);
     }
   </style>
@@ -79,11 +79,11 @@
 <!-- Welcome Screen -->
 <div id="welcome-screen">
   <div class="welcome-content">
-    <h1 class="welcome-title">✨ Hola, mi linda princesa ✨</h1>
+    <h1 class="welcome-title">✨ Hola, mi amor Cris ✨</h1>
     <p class="welcome-message">
       Esta es tu galaxia, ven acá cada que quieras sentirte amada.<br>
       Recuerda que te amo mil millones.<br><br>
-      - Chris
+      - Para ti, mi vida
     </p>
     <button id="enter-btn">🚀 Viajar a tu galaxia</button>
   </div>
@@ -99,7 +99,7 @@
 
 <!-- Galaxy -->
 <canvas id="galaxy-canvas"></canvas>
-<div class="pill">Te Amo Muchote Mi Princesa Hermosa Vicky💛</div>
+<div class="pill">Te Amo Muchote Mi Amor Cris 💕</div>
 <div id="err" class="error"></div>
 
 <canvas id="fx" style="position:fixed;inset:0;pointer-events:none;display:none;"></canvas>
@@ -124,12 +124,12 @@ const currentNarrative = document.getElementById('current-narrative');
 // Sistema de sincronización manual como subtítulos
 // Tiempos exactos en segundos para cada texto (basado en el tiempo de la canción)
 const narrativeTimeline = [
-  { start: 0, end: 5, text: "Vicky,<br>he cruzado regiones donde la luz tarda siglos en admitir que existió,<br>y aun así ninguna estrella sabe pronunciar tu nombre como lo hace mi memoria." },
+  { start: 0, end: 5, text: "Cris,<br>he cruzado regiones donde la luz tarda siglos en admitir que existió,<br>y aun así ninguna estrella sabe pronunciar tu nombre como lo hace mi memoria." },
   { start: 5, end: 10, text: "Voy flotando entre cúmulos y nebulosas,<br>preguntando al polvo antiguo dónde encaja una mujer<br>que nació con el brillo suficiente para avergonzar a las constelaciones." },
   { start: 10, end: 15, text: "Hay noches en que el espacio es silencio puro,<br>pero incluso ahí encuentro rastros tuyos:<br>una vibración leve, una curvatura mínima de luz,<br>como si el universo se hubiera aprendido tu gesto de mirar hacia otro lado." },
   { start: 15, end: 20, text: "Y sigo.<br>A veces me pregunto si busco un sitio para ti<br>o si simplemente estoy siguiendo el camino que deja tu propia gravedad." },
   { start: 20, end: 25, text: "Porque cada vez que una estrella colapsa,<br>hay un destello que dura menos que un parpadeo,<br>y aun así pienso: 'ella merecería uno más largo, uno sólo suyo'." },
-  { start: 25, end: 30, text: "Vicky,<br>cuando por fin halle un rincón del cosmos que no te quede pequeño,<br>cuando encuentre un cielo que no tema compararse<br>con la forma en que tú enciendes el mío,<br>te lo señalaré sin palabras,<br>como quien descubre por fin<br>el punto exacto donde empieza lo infinito." },
+  { start: 25, end: 30, text: "Cris,<br>cuando por fin halle un rincón del cosmos que no te quede pequeño,<br>cuando encuentre un cielo que no tema compararse<br>con la forma en que tú enciendes el mío,<br>te lo señalaré sin palabras,<br>como quien descubre por fin<br>el punto exacto donde empieza lo infinito." },
   { start: 30, end: 35, text: "Ya estás llegando, bienvenida", final: true }
 ];
 
@@ -312,7 +312,7 @@ function initGalaxy() {
       const g = c.getContext('2d');
       const r = size/2;
       const bg = g.createRadialGradient(r,r, r*0.2, r,r, r);
-      bg.addColorStop(0,'#050010');
+      bg.addColorStop(0,'#1a0014');
       bg.addColorStop(1,'#000000');
       g.fillStyle = bg; g.fillRect(0,0,size,size);
 
@@ -322,8 +322,9 @@ function initGalaxy() {
         const glow = g.createRadialGradient(x,y,0, x,y, Math.random()*2.2+1.6);
         const huePick = Math.random();
         let colInner = 'rgba(255,255,255,'+(0.65*base)+')';
-        let colOuter = 'rgba(180,190,255,'+(0.12*base)+')';
-        if (huePick < 0.25) { colOuter = 'rgba(255,180,240,'+(0.12*base)+')'; }
+        let colOuter = 'rgba(255,182,193,'+(0.15*base)+')';
+        if (huePick < 0.25) { colOuter = 'rgba(255,150,200,'+(0.15*base)+')'; }
+        if (huePick < 0.1) { colOuter = 'rgba(255,200,220,'+(0.15*base)+')'; }
         glow.addColorStop(0, colInner);
         glow.addColorStop(1, colOuter);
         g.fillStyle = glow; g.beginPath(); g.arc(x,y, Math.random()*1.2+0.6, 0, Math.PI*2); g.fill();
@@ -338,23 +339,34 @@ function initGalaxy() {
     scene.add(bg);
 
     const galaxy = new THREE.Group(); scene.add(galaxy);
-    const phrases = ["Princesa ✨", "Hermosa 💛", "Mi Bebé", "Mi Cielito 🌌", "Hermosota ✨", "Mi Infinita ♾️", "Mi Todo", "Me Encantas 🥰", "Vicky 💫", "Te Amo💛", "Mi Canción Favorita 🎶", "Única 😊", "Mi Reina 👑", "Mi Amor", "Mi Mundo", "Mi Luz 🌠", "Mi Niña", "Mi Tesoro💛", "Mi Paz", "Mi Eterna", "Mi Sueño", "Mi Pensamiento Favorito", "Mi Bombón", "Mi Diosa", "Te Amo Infinitamente ♾️", "Si lees esto me debes un beso mi amor", "Te amo mil millones"];
-    const phraseCount = Math.max(phrases.length * 6, 180);
+    const phrases = [
+      "Me gusta cómo tu sonrisa ilumina mi día.", "Me gusta cómo me haces sentir único.", "Me gusta que nuestros corazones coincidan.", "Me gusta que me digas amor.", "Me gusta tu sonrisa.", "Me gusta que me gustes.", "Me gusta cómo te enojas.", "Me gustan tus besos suaves.", "Me gusta cómo me amas.", "Me gusta que estés para mí.",
+      "Me gusta que digas que me extrañas.", "Me gusta que digas cuánto te gusto.", "Me gusta tu humildad.", "Me gusta cómo me haces sentir especial.", "Me gusta cómo brillan tus ojos al sonreír.", "Me gusta cómo tu risa ilumina todo.", "Me gustan tus manos entrelazadas con las mías.", "Me gusta tu forma de cuidar a otros.", "Me gusta cómo una mirada tuya me basta.", "Me gusta la calma que encuentro contigo.",
+      "Me gusta tu esfuerzo por ser mejor.", "Me gusta nuestra conexión profunda.", "Me gusta cómo llenas mi vida de amor.", "Me gusta tu honestidad y autenticidad.", "Me gusta la seguridad de tus brazos.", "Me gusta que vuelvas especial cada día.", "Me gusta la tranquilidad a tu lado.", "Me gusta cómo me haces reír.", "Me gusta tu amor incondicional.", "Me gusta cómo haces cada momento único.",
+      "Me gusta la paz en tu mirada.", "Me gusta sentirme amado con tus gestos.", "Me gusta nuestra conexión.", "Me gusta tu forma de caminar.", "Me gusta verte feliz conmigo.", "Me gusta que me quieras solo a mí.", "Me gusta todo de ti.", "Me gusta decirte te amo.", "Me gustan tus labios dulces.", "Me gusta tu aroma.",
+      "Me gusta caminar contigo.", "Me gusta ser tu amor.", "Me gusta cómo me miras.", "Me gustan tus abrazos.", "Me gusta cómo dices mi nombre.", "Me gustan tus besos únicos.", "Me gusta que no puedas enojarte conmigo.", "Me gusta que siempre me mejores el ánimo.", "Me gusta causarte escalofríos.", "Me gusta cómo te preocupas por mí.",
+      "Me gusta tu confianza en mí.", "Me gusta cómo te desesperas.", "Me gusta tu sonrisa.", "Me gusta oírte cantar.", "Me gusta cómo me haces sentir único.", "Me gusta cómo llegaste a mi vida.", "Me gusta tu paciencia.", "Me gusta que me entiendas sin palabras.", "Me gusta tu apoyo.", "Me gusta cómo me cuidas.",
+      "Me gusta tu ternura.", "Me gusta cómo aceleras mi corazón.", "Me gusta que cada momento contigo sea un sueño.", "Me gusta cómo me haces sentir especial.", "Me gusta cómo nuestras risas encajan.", "Me gusta que nuestros corazones coincidan.", "Me gusta tu amor de cada día.", "Me gusta cómo nuestras almas conectan.", "Me gustan los detalles que compartimos.", "Me gusta que me ames aun en días difíciles.",
+      "Me gusta cómo nuestras miradas hablan.", "Me gusta imaginar un futuro contigo.", "Me gusta que me inspires a ser mejor.", "Me gusta cómo me haces sentir seguro.", "Me gustan tus mensajes diarios.", "Me gusta que hayas llegado a mi vida.", "Me gusta cómo nuestras sonrisas se reflejan.", "Me gusta cómo nuestro amor brilla incluso en lo oscuro.", "Me gustan tus caricias.", "Me gusta sentirme seguro en tus abrazos.",
+      "Me gusta tu apoyo constante.", "Me gusta que me hagas creer en el amor.", "Me gusta cómo enciendes mi amor por ti.", "Me gusta cómo vuelves lo simple extraordinario.", "Me gusta ser tu motivo de sonrisa.", "Me gusta imaginar un futuro juntos.", "Me gusta cómo me besas.", "Me gusta que tus besos me eleven.", "Me gusta cómo dices te amo.", "Me gusta que me aceptes con mis defectos.",
+      "Me gustan tus abrazos cuando estoy triste.", "Me gusta tu amor diario.", "Me gusta cómo me miras.", "Me gusta cómo tus actos dicen que me amas.", "Me gusta cómo me haces creer en la magia.", "Me gusta la calidez de tus besos y abrazos.", "Me gusta que seas mi sueño inesperado.", "Me gusta vivir cada segundo contigo.", "Me gusta ser tu amor.", "Me gusta amarte como tú me amas."
+    ];
+    const phraseCount = Math.max(phrases.length * 2, 200);
     const arms = 5, radius = 82, maxH = 22;
 
-    function makeTextTexture(text, size=48){
+    function makeTextTexture(text, size=36){
       const c=document.createElement('canvas'); c.width=1024; c.height=128;
       const g=c.getContext('2d'); g.clearRect(0,0,c.width,c.height);
-      g.font='800 '+size+'px -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial';
+      g.font='600 '+size+'px -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial';
       g.textAlign='center'; g.textBaseline='middle';
-      g.shadowColor='rgba(210,140,255,0.95)'; g.shadowBlur=24;
-      g.fillStyle='rgba(255,240,255,0.98)'; g.fillText(text,c.width/2,c.height/2);
+      g.shadowColor='rgba(255,150,200,0.95)'; g.shadowBlur=24;
+      g.fillStyle='rgba(255,240,245,0.98)'; g.fillText(text,c.width/2,c.height/2);
       return new THREE.CanvasTexture(c);
     }
 
     for(let i=0;i<phraseCount;i++){ 
       const text = phrases[i%phrases.length];
-      const tex=makeTextTexture(text,48);
+      const tex=makeTextTexture(text,36);
       const spr=new THREE.Sprite(new THREE.SpriteMaterial({ map:tex, transparent:true, depthWrite:false }));
       spr.isPhrase=true;
       const perArm=phraseCount/arms; 
@@ -373,24 +385,24 @@ function initGalaxy() {
       pos[i*3]=Math.cos(ang)*dist; pos[i*3+1]=y; pos[i*3+2]=Math.sin(ang)*dist; 
     }
     geom.setAttribute('position', new THREE.BufferAttribute(pos,3));
-    galaxy.add(new THREE.Points(geom, new THREE.PointsMaterial({ color:0xffffff, size:0.28, transparent:true, opacity:0.65, blending:THREE.AdditiveBlending })));
+    galaxy.add(new THREE.Points(geom, new THREE.PointsMaterial({ color:0xffb6c1, size:0.28, transparent:true, opacity:0.65, blending:THREE.AdditiveBlending })));
 
     const coreR=12;
     const coreTexCanvas=document.createElement('canvas'); coreTexCanvas.width=coreTexCanvas.height=256;
     const cg=coreTexCanvas.getContext('2d'); const grd=cg.createRadialGradient(128,128,10,128,128,128);
-    grd.addColorStop(0,'#140018'); grd.addColorStop(0.6,'#090012'); grd.addColorStop(1,'#000'); cg.fillStyle=grd; cg.arc(128,128,128,0,Math.PI*2); cg.fill();
+    grd.addColorStop(0,'#1a0014'); grd.addColorStop(0.6,'#0f000a'); grd.addColorStop(1,'#000'); cg.fillStyle=grd; cg.arc(128,128,128,0,Math.PI*2); cg.fill();
     const core=new THREE.Mesh(new THREE.SphereGeometry(coreR,64,64), new THREE.MeshBasicMaterial({ map:new THREE.CanvasTexture(coreTexCanvas) }));
     core.renderOrder=1; scene.add(core);
 
-    const photonRing=new THREE.Mesh(new THREE.RingGeometry(coreR*1.05, coreR*1.18, 128), new THREE.MeshBasicMaterial({ color:0xEAAEFF, transparent:true, opacity:0.95, side:THREE.DoubleSide }));
+    const photonRing=new THREE.Mesh(new THREE.RingGeometry(coreR*1.05, coreR*1.18, 128), new THREE.MeshBasicMaterial({ color:0xFFB6C1, transparent:true, opacity:0.95, side:THREE.DoubleSide }));
     photonRing.rotation.x=-Math.PI/2; photonRing.renderOrder=0.5; scene.add(photonRing);
 
     function makeHaloTexture(size=1024, inner=0.45){
       const c=document.createElement('canvas'); c.width=c.height=size; const g=c.getContext('2d'); const r=size/2;
       const grd=g.createRadialGradient(r,r,r*inner, r,r,r);
-      grd.addColorStop(0.0,'rgba(255,200,240,0.45)');
-      grd.addColorStop(0.35,'rgba(220,180,255,0.35)');
-      grd.addColorStop(0.7,'rgba(160,200,255,0.28)');
+      grd.addColorStop(0.0,'rgba(255,182,193,0.45)');
+      grd.addColorStop(0.35,'rgba(255,150,180,0.35)');
+      grd.addColorStop(0.7,'rgba(255,200,220,0.28)');
       grd.addColorStop(1,'rgba(0,0,0,0)');
       g.fillStyle=grd; g.fillRect(0,0,size,size); const tex=new THREE.CanvasTexture(c); tex.needsUpdate=true; return tex;
     }
@@ -440,7 +452,7 @@ function initGalaxy() {
       ctx2.bezierCurveTo(.5*s,-.9*s,1.4*s,-.1*s,0,.9*s);
       ctx2.bezierCurveTo(-1.4*s,-.1*s,-.5*s,-.9*s,0,-.25*s);
       const g=ctx2.createRadialGradient(0,0,0,0,0,s);
-      g.addColorStop(0,'rgba(255,190,220,.95)'); g.addColorStop(1,'rgba(255,90,160,0)');
+      g.addColorStop(0,'rgba(255,182,193,.95)'); g.addColorStop(1,'rgba(255,105,180,0)');
       ctx2.fillStyle=g; ctx2.fill(); ctx2.restore();
     }
     
